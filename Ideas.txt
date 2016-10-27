@@ -1,0 +1,4 @@
++ Delete delete from terminal
++ Bulk csv
++ Create record from terminal
++Display metada
