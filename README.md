@@ -4,9 +4,10 @@
 It is a simple python script to connect Salesforce in order to retrieve soql queries and metadata(Not implemented yet) results by terminal or csv file.
 
 In a future, it will added additional options as:
-+checking csv format
-+Insert/Update/Delete record  bulking a csv file or by terminal.
 
+-Check csv format
+-Insert/Update/Delete record  bulking a csv file or by terminal.
+-Retrieve Metadata.
 
 How to use it:
 
