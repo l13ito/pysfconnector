@@ -6,7 +6,8 @@ It is a simple python script to connect Salesforce in order to retrieve soql que
 In a future, it will added additional options as:
 +checking csv format
 +Insert/Update/Delete record  bulking a csv file or by terminal.
-----------------
+
+
 How to use it:
 
 -Open a linux terminal go to the script folder  
