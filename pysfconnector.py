@@ -13,7 +13,7 @@ file = None
 if len(sys.argv) == 3:
     file = str(sys.argv[2])
 os.system('cls' if os.name == 'nt' else 'clear')
-print "Welcome to pysfconnector v.0.2\n"
+print "Welcome to pysfconnector v.0.3\n"
 
 
 while opt >= 0 or opt < 6:
@@ -30,7 +30,7 @@ while opt >= 0 or opt < 6:
     opt = raw_input("Enter your option:")
     if opt.isdigit():
         opt =int(opt)
-        if opt == 3:
+        if opt == 1:
             sf = option.switch(opt, sf, file)
         else:
             option.switch(opt, sf, file)
