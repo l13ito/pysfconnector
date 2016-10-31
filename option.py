@@ -72,7 +72,7 @@ def switch(opt, sf, file):
                   raw_input("It is not a valid number. Press Enter to continue...")   
           else:
             os.system('cls' if os.name == 'nt' else 'clear')
-            print "-->Please first login into Salesforce option (3)"
+            print "-->Please first login into Salesforce option (1)"
             raw_input("Press Enter to continue...")
 
     else:
