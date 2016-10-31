@@ -52,8 +52,11 @@ def switch(opt, sf, file):
             #soQuery = 'Select Id, Email FROM Contact'
             sfQuery = sf.query(soQuery)
             os.system('cls' if os.name == 'nt' else 'clear')
-            if sfQuery['done'] != True:# It is a bad  condition to  force the result
-                print "Error."
+            print "Here you have the ----->" + sfQuery[0]['errorCode']
+
+            if sfQuery[0]['errorCode'] == 'MALFORMED_QUERY':# It is a bad  condition to  force the result
+                print "Error. Malforformed SOQL Query. Error message: "+ sfQuery[0]['message']
+                print "Please type a proper query"
             else:
                 print "Query has retrieved successfully the results. Choose how you would like to see the results:"
                 print "------------------------"
