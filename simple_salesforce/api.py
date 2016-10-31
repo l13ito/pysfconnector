@@ -697,7 +697,10 @@ def _exception_handler(result, name=""):
     }
     exc_cls = exc_map.get(result.status_code, SalesforceGeneralError)
 
-    raise exc_cls(result.url, result.status_code, name, response_content)
+    #Small modification to avoid the exit of program
+    #raise exc_cls(result.url, result.status_code, name, response_content)
+    return exc_cls(result.url, result.status_code, name, response_content)
+
 
 
 class SalesforceMoreThanOneRecord(SalesforceError):
