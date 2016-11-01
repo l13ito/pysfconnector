@@ -1,7 +1,9 @@
+#import simple_salesforce import Salesforce
 import os
 import csv
 import datetime
 import time
+
 
 #Return field names from the query
 def returnFieldsNames(sfQuery):
@@ -12,7 +14,7 @@ def returnFieldsNames(sfQuery):
 	return fieldnames
 
 #Dipslay results by terminal screen
-def terminal(sfQuery, soQuery):
+def queryTerminal(sfQuery, soQuery):
     os.system('cls' if os.name == 'nt' else 'clear')
     print " Query '" + soQuery + "' results: "
     time.sleep(2)
@@ -26,7 +28,7 @@ def terminal(sfQuery, soQuery):
     raw_input("Press Enter to continue...")
 
 #Create a csv file
-def csvFile(sfQuery, soQuery):
+def queryCsvFile(sfQuery, soQuery):
 	dateTime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 	#file name created concatenating datetime + query
 	filename = (dateTime.strip() + soQuery.strip()).replace(" ","") + ".csv"
@@ -45,4 +47,17 @@ def csvFile(sfQuery, soQuery):
 				if index != 'attributes': #avoiding attributes index from the obtanied json
 					rowQuery.update({index:sfQuery['records'][i][index]})
 			writer.writerow(rowQuery)
-	raw_input("Press Enter to continue...")		
+	raw_input("Press Enter to continue...")
+
+def metadataQuery(sf):
+	for x in sf.describe()["sobjects"]:
+		print x["label"]
+	raw_input("Press Enter to continue...")
+
+
+def objectDescribe(sf):
+	objectName =("Press Insert the object name: ")
+	result =sf.describe(objectName)
+	aw_input("Press Enter to continue...")
+	#/services/data/v37.0/sobjects/Asset/describe
+

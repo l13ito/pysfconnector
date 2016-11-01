@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version v.02
+# Version v.03
 # Author: Angel Herrera Falcon
 # Email :litos1985@gmail.com
 #
@@ -27,11 +27,14 @@ while opt >= 0 or opt < 6:
     print "(6). Format to UTF-8"
     print "(7). Exit"
     print "************************\n"
-    opt = raw_input("Enter your option:")
+    opt = raw_input("Enter your option: ")
     if opt.isdigit():
         opt =int(opt)
         if opt == 1:
             sf = option.switch(opt, sf, file)
+        elif 4 <= opt <=6 and file == None:
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print "There is not any file as argument. (Example: pfconnector.py filename.csv). It is mandatory for option(" + str(opt)+")."  
         else:
             option.switch(opt, sf, file)
     else: 

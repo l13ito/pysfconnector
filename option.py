@@ -3,7 +3,7 @@
 #from sfapi.simple_salesforce import Salesforce
 import analyzer.report as r
 from simple_salesforce import Salesforce
-import optionQuery as oQ
+import optionQueryMetadata as oQM
 import getpass
 import sys
 import os
@@ -12,9 +12,35 @@ import time
 
 
 def switch(opt, sf, file):
+
+    if opt == 3:
+      #print sf.Contact.metadata()
+      if sf != None:
+        print "Choose how you would like to see the results:"
+        print "------------------------"
+        print "      Menu-Metadata     "
+        print "(1) To display Objects List by Terminal"
+        print "(2) To show Fields of an Object by Terminal"
+        #print "(3) Create file with object description"
+        #print "(4) Terminal + csv file"
+        print "(5) Return Main Menu"
+        print "------------------------"
+        optQM = raw_input("Enter your option:")
+        if optQM.isdigit(): 
+          optQM = int(optQM)
+          oQM.displayMetadata(optQM,sf)#Call the function displayQuery on optionQuery file          
+      else:
+          os.system('cls' if os.name == 'nt' else 'clear')
+          print "-->Please first login into Salesforce option (1)"
+          raw_input("Press Enter to continue...")      
+
+      """print sf.CampaignFeed.describe()
+      sf.describe()
+
+      for x in sf.describe()["sobjects"]:
+        print x["label"]"""
   
-    if opt == 4:
-      #
+    elif opt == 4:
       pathFile = '/home/casa/workspace/pycsva/pycsva/test'
       #if not file:
         #print "There is not file, please load again the script. "  
@@ -27,10 +53,10 @@ def switch(opt, sf, file):
         r.load_file_pro(pathFile)
 
     elif opt == 1:
-        usernameT=raw_input("Please insert username: ")
-        #usernameT = "Insert your user name"
-        passwordT=getpass.getpass("Please insert password: ")
-        #passwordT = "Insert your password"
+        #usernameT=raw_input("Please insert username: ")
+        usernameT = "litos-dev@force.com"
+        #passwordT=getpass.getpass("Please insert password: ")
+        passwordT = "canarias.85"
         sf = Salesforce (usernameT,passwordT,'')# No token required
         return sf
         #Need to check if login was worng
@@ -50,27 +76,26 @@ def switch(opt, sf, file):
           if sf != None:
             soQuery = raw_input("Please type your SOQL query:")
             #soQuery = 'Select Id, Email FROM Contact'
-            sfQuery = sf.query(soQuery)
+            sfQuery = sf.query_all(soQuery)
             os.system('cls' if os.name == 'nt' else 'clear')
-            print "Here you have the ----->" + sfQuery[0]['errorCode']
-
             if sfQuery[0]['errorCode'] == 'MALFORMED_QUERY':# It is a bad  condition to  force the result
                 print "Error. Malforformed SOQL Query. Error message: "+ sfQuery[0]['message']
                 print "Please type a proper query"
             else:
                 print "Query has retrieved successfully the results. Choose how you would like to see the results:"
                 print "------------------------"
+                print "       Menu-Query       "
                 print "(1) Terminal"
                 print "(2) Create a csv file on the path " + str(sys.path[0])
                 print "(3) Web Browser"
                 print "(4) Terminal + csv file"
-                print "(5) Exit"
+                print "(5) Return Main Menu"
 
                 print "------------------------"
-                outputQuery = raw_input("Enter your option:")
-                if outputQuery.isdigit(): 
-                  outputQuery = int(outputQuery)
-                  oQ.displayQuery(outputQuery, sfQuery, soQuery)#Call the function displayQuery on optionQuery file
+                optQM = raw_input("Enter your option:")
+                if optQM.isdigit(): 
+                  optQM = int(optQM)
+                  oQM.displayQuery(optQM, sfQuery, soQuery)#Call the function displayQuery on optionQuery file
                 else:
                   raw_input("It is not a valid number. Press Enter to continue...")   
           else:
