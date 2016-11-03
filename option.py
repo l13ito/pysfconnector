@@ -33,12 +33,7 @@ def switch(opt, sf, file):
           os.system('cls' if os.name == 'nt' else 'clear')
           print "-->Please first login into Salesforce option (1)"
           raw_input("Press Enter to continue...")      
-
-      """print sf.CampaignFeed.describe()
-      sf.describe()
-
-      for x in sf.describe()["sobjects"]:
-        print x["label"]"""
+      
   
     elif opt == 4:
       pathFile = '/home/casa/workspace/pycsva/pycsva/test'
@@ -59,7 +54,7 @@ def switch(opt, sf, file):
         #passwordT=
         sf = Salesforce (usernameT,passwordT,'')# No token required
         return sf
-        #Need to check if login was worng
+        #Need to check if login was wrong
       
     elif opt == 6:
       
