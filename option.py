@@ -53,10 +53,10 @@ def switch(opt, sf, file):
         r.load_file_pro(pathFile)
 
     elif opt == 1:
-        #usernameT=raw_input("Please insert username: ")
-        usernameT = "litos-dev@force.com"
-        #passwordT=getpass.getpass("Please insert password: ")
-        passwordT = "canarias.85"
+        usernameT=raw_input("Please insert username: ")
+       #usernameT=
+        passwordT=getpass.getpass("Please insert password: ")
+        #passwordT=
         sf = Salesforce (usernameT,passwordT,'')# No token required
         return sf
         #Need to check if login was worng
