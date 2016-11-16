@@ -1,5 +1,5 @@
 # pysfconnector
-
+[Still in progress]
 
 It is a simple python script to connect Salesforce in order to retrieve soql queries and metadata(Not implemented yet) results by terminal or csv file.
 
