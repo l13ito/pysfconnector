@@ -159,6 +159,23 @@ class Salesforce(object):
         else:
             return json_result
 
+    #Added by me in order to have less complex json response
+    def describeObjectFields(self,objectName):
+        """ Describes the object's fields
+        """
+        url = self.base_url + "sobjects/" + objectName +"/describe"
+        result = self._call_salesforce('GET', url)
+        if result.status_code != 200:
+            raise SalesforceGeneralError(url,
+                                         'describe',
+                                         result.status_code,
+                                         result.content)
+        json_result = result.json(object_pairs_hook=OrderedDict)
+        if len(json_result) == 0:
+            return None
+        else:
+            return json_result
+
     # SObject Handler
     def __getattr__(self, name):
         """Returns an `SFType` instance for the given Salesforce object type
@@ -697,7 +714,7 @@ def _exception_handler(result, name=""):
     }
     exc_cls = exc_map.get(result.status_code, SalesforceGeneralError)
 
-    #Small modification to avoid the exit of program
+    #Small modification to avoid the exit of program<---
     #raise exc_cls(result.url, result.status_code, name, response_content)
     return exc_cls(result.url, result.status_code, name, response_content)
 
