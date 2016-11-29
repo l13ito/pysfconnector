@@ -19,10 +19,10 @@ def switch(opt, sf, file):
         print "Choose how you would like to see the results:"
         print "------------------------"
         print "      Menu-Metadata     "
-        print "(1) To display Objects List by Terminal"
-        print "(2) To show Fields of an Object by Terminal"
+        print "(1) Display Objects List"
+        print "(2) Show Fields of an Object"
         #print "(3) Create file with object description"
-        #print "(4) Terminal + csv file"
+        #print "(4) Display results via Terminal + csv file"
         print "(5) Return Main Menu"
         print "------------------------"
         optQM = raw_input("Enter your option:")
@@ -49,9 +49,9 @@ def switch(opt, sf, file):
 
     elif opt == 1:
         usernameT=raw_input("Please insert username: ")
-       #usernameT=
+        #usernameT=""
         passwordT=getpass.getpass("Please insert password: ")
-        #passwordT=
+        #passwordT=""
         sf = Salesforce (usernameT,passwordT,'')# No token required
         return sf
         #Need to check if login was wrong
