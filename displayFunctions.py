@@ -3,6 +3,7 @@ import os
 import csv
 import datetime
 import time
+from simple_salesforce import SFType
 
 
 #Return field names from the query
@@ -55,9 +56,16 @@ def metadataQuery(sf):
 	raw_input("Press Enter to continue...")
 
 
-def objectDescribe(sf):
-	objectName =("Press Insert the object name: ")
-	result =sf.describe(objectName)
-	aw_input("Press Enter to continue...")
+def objectFieldDescribe(sf):
+	objectName = raw_input("Press Insert the object name: ")
+	for x in sf.describeObjectFields(objectName)["fields"]:
+		print x["label"]
+	field = raw_input ("If would like to know more details field press insert the field name or '0' if you prefer to continue: ")	
+	while field != "0":
+		field = raw_input("Press insert a new field name or '0': ")	
+
+	
+	
+	#aw_input("Press Enter to continue...")
 	#/services/data/v37.0/sobjects/Asset/describe
 
