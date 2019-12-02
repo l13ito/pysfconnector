@@ -18,5 +18,5 @@ I have used library:
 Simple salesforce  library. 
 https://github.com/simple-salesforce/simple-salesforce
 
-litos1985@gmail.com
+
 .....
